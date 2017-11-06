@@ -17,6 +17,7 @@ public class Wuerfel implements Codec {
         Hashtable<Integer, Character> hashtable = new Hashtable<>();
         for(int i = 0; i < originalOrder.length; i++)
             hashtable.put(originalOrder[i],sortedLosung[i]);
+        return null;
     }
 
     @Override
