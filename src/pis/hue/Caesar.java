@@ -9,7 +9,7 @@ public class Caesar implements Codec {
     public String kodiere(String klartext) {
         StringBuilder result = new StringBuilder(klartext);
         for (int i = 0; i < klartext.length(); i++) {
-            if (!((int) result.charAt(i) < 97 || (int) result.charAt(i) > 172))
+            if (!((int) result.charAt(i) < 97 || (int) result.charAt(i) > 122))
                 result.setCharAt(i, (char) (97 + (((int) result.charAt(i) + charShift - 97) % 26)));
         }
         return result.toString();
@@ -19,7 +19,7 @@ public class Caesar implements Codec {
     public String dekodiere(String geheimtext) {
         StringBuilder result = new StringBuilder(geheimtext);
         for (int i = 0; i < geheimtext.length(); i++) {
-            if (!((int) result.charAt(i) < 97 || (int) result.charAt(i) > 172)) {
+            if (!((int) result.charAt(i) < 97 || (int) result.charAt(i) > 122)) {
                 int offset = 0;
                 if (((int) result.charAt(i) - 122) <= 0)
                     offset = 26;

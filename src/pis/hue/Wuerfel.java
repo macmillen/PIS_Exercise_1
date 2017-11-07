@@ -61,7 +61,7 @@ public class Wuerfel implements Codec {
     public void setzeLosung(String schluessel) throws IllegalArgumentException {
         schluessel = schluessel.toLowerCase();
         for (int i = 0; i < schluessel.length(); i++)
-            if ((int) schluessel.charAt(i) < 97 || (int) schluessel.charAt(i) > 172)
+            if ((int) schluessel.charAt(i) < 97 || (int) schluessel.charAt(i) > 122)
                 throw new IllegalArgumentException("SONDERZEICHEN NICHT ERLAUBT!");
 
         losung = schluessel;
