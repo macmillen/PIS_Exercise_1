@@ -1,28 +1,48 @@
 package pis.hue;
 
-import java.util.Arrays;
-import java.util.Hashtable;
+import java.util.ArrayList;
 
 public class Wuerfel implements Codec {
 
-    String losung;
+    private String losung;
+    private ArrayList<Integer> codes;
 
     @Override
-    public String kodiere(String klartext){
-        int[] originalOrder = new int[losung.length()];
-        for(int i = 0; i < originalOrder.length; i++)
-            originalOrder[i] = i;
-            char[] sortedLosung = losung.toCharArray();
-        Arrays.sort(sortedLosung);
-        Hashtable<Integer, Character> hashtable = new Hashtable<>();
-        for(int i = 0; i < originalOrder.length; i++)
-            hashtable.put(originalOrder[i],sortedLosung[i]);
-        return null;
+    public String kodiere(String klartext) {
+        return generateMessage(false, klartext);
     }
 
     @Override
     public String dekodiere(String geheimtext) {
-        return null;
+        return generateMessage(true, geheimtext);
+    }
+
+    private String generateMessage(boolean decode, String text) {
+        StringBuilder result;
+        if (decode)
+            result = new StringBuilder(text);
+        else
+            result = new StringBuilder("");
+        int counter = 0;
+        for (int a = 0; a < codes.size(); a++) {
+            for (int i = 0; i < codes.size(); i++) {
+                if (codes.get(i) == a) {
+                    for (int e = 0; e < codes.size(); e++) {
+                        try {
+                            if (decode) {
+                                result.setCharAt(i + e * (codes.size()), text.charAt(counter));
+                                counter++;
+                            } else {
+                                result.append(text.substring(i + e * (codes.size()), i + e * (codes.size()) + 1));
+                            }
+                        } catch (StringIndexOutOfBoundsException ex) {
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+        return result.toString();
     }
 
     @Override
@@ -32,6 +52,32 @@ public class Wuerfel implements Codec {
 
     @Override
     public void setzeLosung(String schluessel) throws IllegalArgumentException {
+        schluessel = schluessel.toLowerCase();
+        for (int i = 0; i < schluessel.length(); i++)
+            if ((int) schluessel.charAt(i) < 97 || (int) schluessel.charAt(i) > 172)
+                throw new IllegalArgumentException("SONDERZEICHEN NICHT ERLAUBT!");
+
         losung = schluessel;
+        codes = generateCodes();
+    }
+
+    private ArrayList<Integer> generateCodes() {
+        ArrayList<Integer> codes = new ArrayList<>();
+        for (int i = 0; i < losung.length(); i++) {
+            codes.add((int) losung.charAt(i));
+        }
+
+        for (int a = 0; a < codes.size(); a++) {
+            int max = 0;
+            int index = 0;
+            for (int i = 0; i < codes.size(); i++) {
+                if (codes.get(i) >= max) {
+                    max = codes.get(i);
+                    index = i;
+                }
+            }
+            codes.set(index, codes.size() - 1 - a);
+        }
+        return codes;
     }
 }
