@@ -1,10 +1,25 @@
 .root {
+    -fx-background-image: url("../../background.jpg");
 }
 
-.button {
-    -fx-pref-width: inherit;
+#btnDecrypt {
+    -fx-background-color: darkslategrey;
+    -fx-text-fill: white;
 }
 
-.text-area {
+#btnEncrypt {
+    -fx-background-color: darkred;
+    -fx-text-fill: white;
+}
 
+.label {
+    -fx-font-size: 13px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
+}
+
+.radio-button {
+    -fx-font-size: 12px;
+    -fx-font-weight: bolder;
+    -fx-text-fill: white;
 }

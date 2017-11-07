@@ -17,6 +17,13 @@ public class Wuerfel implements Codec {
         return generateMessage(true, geheimtext);
     }
 
+    /**
+     * Generiert ver- oder entschluesselte Nachricht
+     *
+     * @param decode true: Entschluesseln, false: Verschluesseln
+     * @param text   Nachricht
+     * @return gibt ver- oder entschlüsselte Nachricht zurück
+     */
     private String generateMessage(boolean decode, String text) {
         StringBuilder result;
         if (decode)
@@ -27,7 +34,7 @@ public class Wuerfel implements Codec {
         for (int a = 0; a < codes.size(); a++) {
             for (int i = 0; i < codes.size(); i++) {
                 if (codes.get(i) == a) {
-                    for (int e = 0; e < codes.size(); e++) {
+                    for (int e = 0; e < Integer.MAX_VALUE; e++) {
                         try {
                             if (decode) {
                                 result.setCharAt(i + e * (codes.size()), text.charAt(counter));
@@ -61,6 +68,11 @@ public class Wuerfel implements Codec {
         codes = generateCodes();
     }
 
+    /**
+     * Nummeriert chars des Losungswortes.
+     *
+     * @return gibt Liste mit Nummerierungen zurück.
+     */
     private ArrayList<Integer> generateCodes() {
         ArrayList<Integer> codes = new ArrayList<>();
         for (int i = 0; i < losung.length(); i++) {

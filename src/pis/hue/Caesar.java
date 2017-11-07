@@ -3,7 +3,7 @@ package pis.hue;
 public class Caesar implements Codec {
 
     private String losung;
-    private int charShift = 3;
+    private int charShift;
 
     @Override
     public String kodiere(String klartext) {
@@ -42,5 +42,6 @@ public class Caesar implements Codec {
                 throw new IllegalArgumentException("SONDERZEICHEN NICHT ERLAUBT!");
 
         losung = schluessel;
+        charShift = schluessel.length();
     }
 }
