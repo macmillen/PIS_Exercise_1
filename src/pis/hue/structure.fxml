@@ -15,9 +15,9 @@
         <ToggleGroup fx:id="toggleGroup"/>
     </fx:define>
 
-    <RadioButton text="Cube" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="0" selected="true"
+    <RadioButton text="Cube" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="0" selected="false"
                  fx:id="radioCube"/>
-    <RadioButton text="Caesar" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="1"
+    <RadioButton text="Caesar" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="1" selected="true"
                  fx:id="radioCaesar"/>
     <Button text="Encrypt" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="btnEncrypt" onAction="#buttonEncrypt"
             GridPane.hgrow="ALWAYS" maxWidth="Infinity"/>
@@ -29,12 +29,13 @@
                fx:id="textFieldKlar" GridPane.columnSpan="2"/>
     <Label text="Geheimtext" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
     <TextField promptText="+#-/]{³@*+" GridPane.columnIndex="0" GridPane.rowIndex="6" prefWidth="150"
-               fx:id="textFieldGeheim" GridPane.columnSpan="2" GridPane.vgrow="NEVER"/>
+               fx:id="textFieldGeheim" GridPane.columnSpan="2" GridPane.vgrow="NEVER"
+               text="Rdmzl vmsf uy waybxqff hqdimtdxaefqz Fmju cgqd pgdot Nmkqdz, 12345678910!?"/>
 
     <Label text="1. Losungswort" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
     <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="8" fx:id="losung1"
-               text="Programmierung"/>
+               text="Mittelhessen"/>
     <Label text="2. Losungswort" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-    <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="9" fx:id="losung2" text="Vergnuegen"/>
+    <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="9" fx:id="losung2" text=""/>
 
 </GridPane>

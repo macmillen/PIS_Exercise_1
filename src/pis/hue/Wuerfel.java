@@ -5,7 +5,15 @@ import java.util.ArrayList;
 public class Wuerfel implements Codec {
 
     private String losung;
+    private String losungOriginal;
     private ArrayList<Integer> codes;
+
+    public Wuerfel(String losung) {
+        setzeLosung(losung);
+    }
+
+    public Wuerfel() {
+    }
 
     @Override
     public String kodiere(String klartext) {
@@ -54,11 +62,12 @@ public class Wuerfel implements Codec {
 
     @Override
     public String gibLosung() {
-        return losung;
+        return losungOriginal;
     }
 
     @Override
     public void setzeLosung(String schluessel) throws IllegalArgumentException {
+        losungOriginal = schluessel;
         schluessel = schluessel.toLowerCase();
         for (int i = 0; i < schluessel.length(); i++)
             if ((int) schluessel.charAt(i) < 97 || (int) schluessel.charAt(i) > 122)
