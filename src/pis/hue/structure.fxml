@@ -15,10 +15,10 @@
         <ToggleGroup fx:id="toggleGroup"/>
     </fx:define>
 
-    <RadioButton text="Cube" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="0" selected="false"
-                 fx:id="radioCube"/>
+    <RadioButton text="Cube" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="0"
+                 fx:id="radioCube" onAction="#radioButtonWuerfel"/>
     <RadioButton text="Caesar" toggleGroup="$toggleGroup" GridPane.columnIndex="0" GridPane.rowIndex="1" selected="true"
-                 fx:id="radioCaesar"/>
+                 fx:id="radioCaesar" onAction="#radioButtonCaesar"/>
     <Button text="Encrypt" GridPane.columnIndex="1" GridPane.rowIndex="0" fx:id="btnEncrypt" onAction="#buttonEncrypt"
             GridPane.hgrow="ALWAYS" maxWidth="Infinity"/>
     <Button text="Decrypt" GridPane.columnIndex="1" GridPane.rowIndex="1" fx:id="btnDecrypt" onAction="#buttonDecrypt"
@@ -36,6 +36,6 @@
     <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="8" fx:id="losung1"
                text="Mittelhessen"/>
     <Label text="2. Losungswort" GridPane.columnIndex="0" GridPane.rowIndex="9"/>
-    <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="9" fx:id="losung2" text=""/>
+    <TextField promptText="LOSUNG" GridPane.columnIndex="1" GridPane.rowIndex="9" fx:id="losung2" disable="true"/>
 
 </GridPane>

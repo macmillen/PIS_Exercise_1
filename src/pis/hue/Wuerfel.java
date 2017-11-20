@@ -2,6 +2,10 @@ package pis.hue;
 
 import java.util.ArrayList;
 
+/**
+ * Doppelwuerfel Verschlüsselungsverfahren
+ */
+
 public class Wuerfel implements Codec {
 
     private String losung;
@@ -15,11 +19,23 @@ public class Wuerfel implements Codec {
     public Wuerfel() {
     }
 
+    /**
+     * Generiere Geheimtext
+     *
+     * @param klartext Nachricht, die zu verschluesseln ist.
+     * @return kodierten Geheimtext
+     */
     @Override
     public String kodiere(String klartext) {
         return generateMessage(false, klartext);
     }
 
+    /**
+     * Dekodiere Nachricht
+     *
+     * @param geheimtext Nachricht, die zu entschlüsseln ist.
+     * @return Dekodierten Text
+     */
     @Override
     public String dekodiere(String geheimtext) {
         return generateMessage(true, geheimtext);
@@ -65,6 +81,11 @@ public class Wuerfel implements Codec {
         return losungOriginal;
     }
 
+    /**
+     * Prüfe ob Sonderzeichen vorhanden.
+     * @param schluessel Neue Losung.
+     * @throws IllegalArgumentException
+     */
     @Override
     public void setzeLosung(String schluessel) throws IllegalArgumentException {
         losungOriginal = schluessel;

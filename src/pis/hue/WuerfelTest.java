@@ -16,11 +16,15 @@ Instruktionen:
 Viel Spaß und Erfolg beim Programmieren ;)
 */
 
+/**
+ * Testklasse
+ */
+
 public class WuerfelTest {
 
-    Codec codec_1 = new Wuerfel("THM");
-    Codec codec_2 = new Wuerfel("Mittelhessen");
-    Codec codec_3 = new Caesar();
+    private Codec codec_1 = new Wuerfel("THM");
+    private Codec codec_2 = new Wuerfel("Mittelhessen");
+    private Codec codec_3 = new Caesar();
 
     @Test
     public void testKodiereWuerfel() {

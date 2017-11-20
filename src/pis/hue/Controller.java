@@ -5,6 +5,10 @@ import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
+/**
+ * GUI-Klasse zum Steuern der FXML-Elemente
+ */
+
 public class Controller {
 
     public Button btnEncrypt, btnDecrypt;
@@ -15,14 +19,12 @@ public class Controller {
     private Codec wuerfel1 = new Wuerfel();
     private Codec wuerfel2 = new Wuerfel();
     private Codec caesar1 = new Caesar();
-    private Codec caesar2 = new Caesar();
 
     public void buttonEncrypt() {
         textFieldKlar.setStyle("");
         if (radioCaesar.isSelected()) {
             caesar1.setzeLosung(losung1.getText());
-            caesar2.setzeLosung(losung2.getText());
-            textFieldGeheim.setText(caesar2.kodiere(caesar1.kodiere(textFieldKlar.getText())));
+            textFieldGeheim.setText(caesar1.kodiere(textFieldKlar.getText()));
         } else {
             wuerfel1.setzeLosung(losung1.getText());
             wuerfel2.setzeLosung(losung2.getText());
@@ -37,13 +39,20 @@ public class Controller {
 
         if (radioCaesar.isSelected()) {
             caesar1.setzeLosung(losung1.getText());
-            caesar2.setzeLosung(losung2.getText());
-            textFieldKlar.setText(caesar1.dekodiere(caesar2.dekodiere(textFieldGeheim.getText())));
+            textFieldKlar.setText(caesar1.dekodiere(textFieldGeheim.getText()));
         } else {
             wuerfel1.setzeLosung(losung1.getText());
             wuerfel2.setzeLosung(losung2.getText());
             textFieldKlar.setText(wuerfel1.dekodiere(wuerfel2.dekodiere(textFieldGeheim.getText())));
         }
         textFieldKlar.setStyle("-fx-text-fill: green; -fx-border-color: green; -fx-border-radius: 3px; -fx-border-width: 2px");
+    }
+
+    public void radioButtonWuerfel() {
+        losung2.setDisable(false);
+    }
+
+    public void radioButtonCaesar() {
+        losung2.setDisable(true);
     }
 }
